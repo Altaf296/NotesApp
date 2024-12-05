@@ -1,0 +1,14 @@
+<div>
+    <h2>Edit Note</h2>
+    <form (ngSubmit)="update()" class="createForm">
+        <label for="Title">Title:</label>
+        <input type="text" id="title" class="input-group" [(ngModel)]="note.title"
+        name="title" required>
+        <label for="Description">Description:</label>
+        <textarea id="description" class="input-group" [(ngModel)]="note.description"
+        name="description"></textarea>
+        <button type="submit">Update</button>
+        <button (click)="goback()">Back</button>
+    </form>
+</div>
+

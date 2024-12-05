@@ -1,0 +1,21 @@
+<div class="top">
+    <h2>Notes App</h2>
+    <button routerLink="create">Create New Note</button>
+    @if(note.length >0){
+        <div class="main">
+            <div *ngFor="let note of note" class="card" >
+            <div class="card-body">
+                <h4 class="card-title">Tilte:{{note.title}}</h4>
+                <p class="card-text">Description:{{note.description}}</p>
+                <p class="card-text">Created On:{{note.date}}</p>
+                <button class="card-link" [routerLink]="'edit/'+note.id">Edit</button>
+                <a (click)="deleteNote(note.id)" class="card-link"><button>Delete</button></a>
+            </div>
+        </div>
+    </div>
+    }@else {
+        <div class="alert alert-secondary" role="alert">
+            You didn't have any notes.Please create First.
+        </div>
+    }
+</div>

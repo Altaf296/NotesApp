@@ -1,0 +1,26 @@
+.top{
+    outline: auto;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.main{
+    margin: auto;
+    margin-bottom: 15px;
+    padding: 20px;
+    align-content: center;
+}
+.card{
+    margin: auto;
+    margin-bottom: 25px;
+    max-width: 300px;
+}
+.button{
+    margin:auto;
+    border-radius: 8px;
+    align-items: center;
+}
+h2{
+    font-size: 80px;
+    margin: auto;
+    margin-bottom: 15px;
+}
