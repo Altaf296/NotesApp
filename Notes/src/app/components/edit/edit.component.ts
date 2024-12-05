@@ -4,6 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { Note } from '../../models/note';
 import { NoteService } from '../../services/note.service';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-edit',
@@ -13,9 +17,19 @@ import { NoteService } from '../../services/note.service';
   styleUrl: './edit.component.css'
 })
 export class EditComponent {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  durationInSeconds = 2;
+
+  
   noteId:number|any;
   note:Note |any;
-  constructor(private noteService:NoteService, private activatedRoute:ActivatedRoute, private router:Router){
+  constructor(
+    private noteService:NoteService, 
+    private activatedRoute:ActivatedRoute, 
+    private router:Router,
+    
+  ){
 
   }
   ngOnInit():void{
@@ -33,9 +47,9 @@ export class EditComponent {
   update():void{
     this.noteService.update(this.note);
     this.router.navigate(['']);
-    open("record has been updated!")
+    alert("record has been updated!")
   }
   goback(){
-    this.router.navigate(['/home'])
+    this.router.navigate([''])
   }
 }

@@ -18,30 +18,49 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrl: './create.component.css',
 })
 export class CreateComponent {
-newNote:Note ={
-  id: 0,
-  title: '',
-  description:'',
-  date:new Date(),
-  color:''
-}
-constructor(private noteServices:NoteService, private ActivatedRoute:ActivatedRoute, private router:Router){}
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  durationInSeconds = 2;
+
+  newNote:Note ={
+    id: 0,
+    title: '',
+    description:'',
+    date:new Date(),
+    color:''
+  }
+  constructor(
+    private noteServices:NoteService, 
+    private ActivatedRoute:ActivatedRoute, 
+    private router:Router,
+    private _snackBar :MatSnackBar
+  ){}
+
 
 createNew():void{
   console.log(this.newNote);
   this.noteServices.create(this.newNote);
   console.log(this.newNote);
-  open("Notes Created Successfully !");
+  // open("Notes Created Successfully !");
+  this.openSnackBar("Notes Created Successfully !")
   this.newNote ={
     id: 0,
     title: '',
     description:'',
     date:new Date(),
     color:''
-}
-}
-goBack(){
+  }
   this.router.navigate(['']);
 }
-}
+  goBack(){
+    this.router.navigate(['/home.component']);
+  }
 
+  openSnackBar(message: string) {
+    this._snackBar.open(`${message}`, 'close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+}

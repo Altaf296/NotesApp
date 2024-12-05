@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatLabel } from '@angular/material/form-field';
 import { MatFormField } from '@angular/material/form-field';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import { MatFormField } from '@angular/material/form-field';
     RouterLink,
     MatLabel,
     MatFormField
-
   ],
   providers: [
     provideAnimationsAsync()
