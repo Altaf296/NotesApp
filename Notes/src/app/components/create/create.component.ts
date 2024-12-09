@@ -40,7 +40,6 @@ export class CreateComponent {
 createNew():void{
   console.log(this.newNote);
   this.noteServices.create(this.newNote);
-  console.log(this.newNote);
   // open("Notes Created Successfully !");
   this.openSnackBar("Notes Created Successfully !")
   this.newNote ={

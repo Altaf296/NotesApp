@@ -21,14 +21,13 @@ export class EditComponent {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds = 2;
 
-  
   noteId:number|any;
   note:Note |any;
   constructor(
     private noteService:NoteService, 
     private activatedRoute:ActivatedRoute, 
     private router:Router,
-    
+    private _snackbar:MatSnackBar
   ){
 
   }
@@ -40,16 +39,27 @@ export class EditComponent {
         this.note = this.noteService.get(this.noteId);
         console.log(this.note);
       }else{
-        console.log('Something Went Wrong')
+        //console.log('Something Went Wrong')
+        //this.openSnackBar("Notes updated Successfully !")
       }
     });
   }
   update():void{
     this.noteService.update(this.note);
     this.router.navigate(['']);
-    alert("record has been updated!")
+    this.openSnackBar("Notes updated Successfully !")
+    //alert("record has been updated!")
+    
   }
   goback(){
     this.router.navigate([''])
+  }
+
+  openSnackBar(message: string) {
+    this._snackbar.open(`${message}`, 'close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.durationInSeconds * 1000,
+    });
   }
 }
